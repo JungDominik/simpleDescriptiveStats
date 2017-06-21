@@ -16,38 +16,38 @@ def histo(inList):
 
 def mean(in_List):
 	sum = 0
-	for zahl in in_List:
-		sum += zahl
+	for num in in_List:
+		sum += num
 	return (sum/len(in_List))
 
 def median(in_List):
-        listeLaenge = len(in_List)
-        halbeLaenge = round(listeLaenge / 2)                    
-        listeGeordnet = sorted(in_List)
+        listLength = len(in_List)
+        halfLength = round(listLength / 2)                    
+        listOrdered = sorted(in_List)
 
-        if listeLaenge % 2 == 0:
-                oberMedian = listeGeordnet[halbeLaenge-1]
-                unterMedian = listeGeordnet[halbeLaenge]
-                return (unterMedian + oberMedian)/2
+        if listLength % 2 == 0:
+                upperMedian = listOrdered[halfLength-1]
+                lowerMedian = listOrdered[halfLength]
+                return (lowerMedian + upperMedian)/2
         else:
-                return listeGeordnet[halbeLaenge-1]             
+                return listOrdered[halfLength-1]             
 
 def mode(in_List):
-        zaehlDict = {}
-        for zahl in in_List:
-                stringZahl = str(zahl)
-                if stringZahl in zaehlDict:
-                        zaehlDict[stringZahl] += 1
+        countDict = {}
+        for num in in_List:
+                stringnum = str(num)
+                if stringnum in countDict:
+                        countDict[stringnum] += 1
                 else:
-                        zaehlDict[stringZahl] = 1
-        dict_items_ListeGesortedValues = sorted(zaehlDict.items(), key = lambda x : x[1], reverse = True)       
-        return dict_items_ListeGesortedValues[0][0]                                                            
+                        countDict[stringnum] = 1
+        dict_items_ListSortedValues = sorted(countDict.items(), key = lambda x : x[1], reverse = True)       
+        return dict_items_ListSortedValues[0][0]                                                            
                                                 
 def variance(in_list):
 	listMean = mean(in_list)
 	sumSquared = 0
-	for zahl in in_list:
-		sumSquared += ((zahl - listMean)**2)
+	for num in in_list:
+		sumSquared += ((num - listMean)**2)
 	return (sumSquared / (len(in_list)-1))
 
 
@@ -56,8 +56,8 @@ def findSD(in_list):
 	return math.sqrt(listVar)
 
 def standardiseScore(in_wert, in_group):
-        meanAbweichung = in_wert - mean(in_group)
-        return (meanAbweichung / findSD(in_group))
+        meanDeviation = in_wert - mean(in_group)
+        return (meanDeviation / findSD(in_group))
 
 def standardiseList (in_list):
         returnList = []
